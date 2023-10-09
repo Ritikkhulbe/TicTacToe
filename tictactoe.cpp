@@ -68,11 +68,11 @@ class t{
     }
     void print_board(vector<vector<char>>& b){
         cout<<"      BOARD              POSITIONS  "<<endl;
-        cout<<"    "<<Character(b[0][0])<<" | "<<Character(b[0][1])<<" | "<<Character(b[0][2])<<" "<<"          "<<"1 1|1 2|1 3"<<endl;
+        cout<<"    "<<Character(b[0][0])<<" | "<<Character(b[0][1])<<" | "<<Character(b[0][2])<<" "<<"          "<<" 7 | 8 | 9 "<<endl;
         cout<<"   -----------"<<"          "<<"-----------"<<endl;
-        cout<<"    "<<Character(b[1][0])<<" | "<<Character(b[1][1])<<" | "<<Character(b[1][2])<<" "<<"          "<<"2 1|2 2|2 3"<<endl;
+        cout<<"    "<<Character(b[1][0])<<" | "<<Character(b[1][1])<<" | "<<Character(b[1][2])<<" "<<"          "<<" 4 | 5 | 6 " <<endl;
         cout<<"   -----------"<<"          "<<"-----------"<<endl;
-        cout<<"    "<<Character(b[2][0])<<" | "<<Character(b[2][1])<<" | "<<Character(b[2][2])<<" "<<"          "<<"3 1|3 2|3 3"<<endl;
+        cout<<"    "<<Character(b[2][0])<<" | "<<Character(b[2][1])<<" | "<<Character(b[2][2])<<" "<<"          "<<" 1 | 2 | 3 "<<endl;
     }
 
     void tictactoe(){
@@ -92,21 +92,55 @@ class t{
             int x,y;
             while(true){
                 cout<<"     ";
-                cin >> x >> y;
-                if(x<1 || x>3 || y<1 || y>3){
+                int z;
+                cin >> z;
+                if(z==1){
+                    x = 2;
+                    y = 0;
+                    break;
+                }else if(z==2){
+                    x = 2;
+                    y = 1;
+                    break;
+                }else if(z==3){
+                    x = 2;
+                    y = 2;
+                    break;
+                }else if(z==4){
+                    x = 1;
+                    y = 0;
+                    break;
+                }else if(z==5){
+                    x = 1;
+                    y = 1;
+                    break;
+                }else if(z==6){
+                    x = 1;
+                    y = 2;
+                    break;
+                }else if(z==7){
+                    x = 0;
+                    y = 0;
+                    break;
+                }else if(z==8){
+                    x = 0;
+                    y = 1;
+                    break;
+                }else if(z==9){
+                    x = 0;
+                    y = 2;
+                    break;
+                }else if(z<1 || z>9){
                     cout<<"   Invalid Position. Try again."<<endl;
-                }else if(board[x-1][y-1] != 'a'){
+                }else if(board[x][y] != 'a'){
                     cout<<"   Position already occupied. Try Again."<<endl;
                 }
-                else{
-                    break;
-                }
             }
-            board[x-1][y-1] = ch;
+            board[x][y] = ch;
             a++;
             if(a>=6){
                 if(won(board, ch)){   
-                print_board(board);
+                    print_board(board);
                     if(ch == 'O'){
                         cout<<"\n   "<<p1<< " WON!!! Congrats!!"<<endl;
                     }else{
@@ -116,6 +150,7 @@ class t{
                 }
             }
             if(a>9){
+                print_board(board);
                 cout<<"\n   It's a tie."<<endl;
                 a=0;
             }
@@ -124,11 +159,11 @@ class t{
     void Explanation(){
         cout<<"   Tic Tac Toe is a two player game in which both the players take turns alternatively"<<endl;
         cout<<"\n   Starts with player one(O) then player two(X). Who so ever makes a straight line \n\n   Even the diagonals on the board first wins. Positions are given in the below."<<endl;
-        cout<<"   1 1|1 2|1 3"<<endl;
+        cout<<"    7 | 8 | 9 "<<endl;
         cout<<"   -----------"<<endl;
-        cout<<"   2 1|2 2|2 3"<<endl;
+        cout<<"    4 | 5 | 6 "<<endl;
         cout<<"   -----------"<<endl;
-        cout<<"   3 1|3 2|3 3"<<endl;
+        cout<<"    1 | 2 | 3 "<<endl;
         cout<<"\n\n   Let's Start Playing\n"<<endl;
     }
 };
