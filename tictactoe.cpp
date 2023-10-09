@@ -6,6 +6,7 @@ class t{
     public:
     string p1;
     string p2;
+    int e = 0, f = 0;
 
     void getnames(string name1, string name2){
         this->p1 = name1;
@@ -89,51 +90,48 @@ class t{
                 ch = 'X';
             }
             
-            int x,y;
+            int x=0,y=0;
             while(true){
                 cout<<"     ";
                 int z;
                 cin >> z;
+                if(board[x][y] != 'a'){
+                    cout<<"   Position already occupied. Try Again."<<endl;
+                }
                 if(z==1){
                     x = 2;
                     y = 0;
-                    break;
                 }else if(z==2){
                     x = 2;
                     y = 1;
-                    break;
                 }else if(z==3){
                     x = 2;
                     y = 2;
-                    break;
                 }else if(z==4){
                     x = 1;
                     y = 0;
-                    break;
                 }else if(z==5){
                     x = 1;
                     y = 1;
-                    break;
                 }else if(z==6){
                     x = 1;
                     y = 2;
-                    break;
                 }else if(z==7){
                     x = 0;
                     y = 0;
-                    break;
                 }else if(z==8){
                     x = 0;
                     y = 1;
-                    break;
                 }else if(z==9){
                     x = 0;
                     y = 2;
-                    break;
                 }else if(z<1 || z>9){
                     cout<<"   Invalid Position. Try again."<<endl;
-                }else if(board[x][y] != 'a'){
+                }
+                if(board[x][y] != 'a'){
                     cout<<"   Position already occupied. Try Again."<<endl;
+                }else{
+                    break;
                 }
             }
             board[x][y] = ch;
@@ -142,9 +140,13 @@ class t{
                 if(won(board, ch)){   
                     print_board(board);
                     if(ch == 'O'){
+                        e++;
                         cout<<"\n   "<<p1<< " WON!!! Congrats!!"<<endl;
+                        cout<<"\n   Score: "<<e<<" - "<<f;   
                     }else{
+                        f++;
                         cout<<"\n   "<<p2<< " WON!!! Congrats!!"<<endl;
+                        cout<<"\n   Score: "<<e<<" - "<<f;   
                     }
                     a=0;
                 }
