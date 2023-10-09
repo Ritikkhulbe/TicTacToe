@@ -58,12 +58,29 @@ class t{
         }
         return false;
     }
+    char Character(char c){
+        if(c=='X' || c=='O'){
+            return c;
+        }else if(c=='a'){
+            return ' ';
+        }
+        return 'a';
+    }
+    void print_board(vector<vector<char>>& b){
+
+        cout<<" "<<Character(b[0][0])<<" | "<<Character(b[0][1])<<" | "<<Character(b[0][2])<<" "<<endl;
+        cout<<"-----------"<<endl;
+        cout<<" "<<Character(b[1][0])<<" | "<<Character(b[1][1])<<" | "<<Character(b[1][2])<<" "<<endl;
+        cout<<"-----------"<<endl;
+        cout<<" "<<Character(b[2][0])<<" | "<<Character(b[2][1])<<" | "<<Character(b[2][2])<<" "<<endl;
+    }
 
     void tictactoe(){
         vector<vector<char>> board(3, vector<char>(3, 'a'));
         int a = 1;
         char ch;
         while(a){
+            print_board(board);
             if(a%2!=0){
                 cout << "Enter the position "<<p1<< "(O)" << endl;
                 ch = 'O';
@@ -87,7 +104,8 @@ class t{
             board[x-1][y-1] = ch;
             a++;
             if(a>=6){
-                if(won(board, ch)){
+                if(won(board, ch)){   
+                print_board(board);
                     if(ch == 'O'){
                         cout<<p1<< " won!!! Congrats!!"<<endl;
                     }else{
