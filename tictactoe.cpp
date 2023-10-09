@@ -67,12 +67,12 @@ class t{
         return 'a';
     }
     void print_board(vector<vector<char>>& b){
-
-        cout<<" "<<Character(b[0][0])<<" | "<<Character(b[0][1])<<" | "<<Character(b[0][2])<<" "<<endl;
-        cout<<"-----------"<<endl;
-        cout<<" "<<Character(b[1][0])<<" | "<<Character(b[1][1])<<" | "<<Character(b[1][2])<<" "<<endl;
-        cout<<"-----------"<<endl;
-        cout<<" "<<Character(b[2][0])<<" | "<<Character(b[2][1])<<" | "<<Character(b[2][2])<<" "<<endl;
+        cout<<"   BOARD              POSITIONS  "<<endl;
+        cout<<" "<<Character(b[0][0])<<" | "<<Character(b[0][1])<<" | "<<Character(b[0][2])<<" "<<"          "<<"1 1|1 2|1 3"<<endl;
+        cout<<"-----------"<<"          "<<"-----------"<<endl;
+        cout<<" "<<Character(b[1][0])<<" | "<<Character(b[1][1])<<" | "<<Character(b[1][2])<<" "<<"          "<<"2 1|2 2|2 3"<<endl;
+        cout<<"-----------"<<"          "<<"-----------"<<endl;
+        cout<<" "<<Character(b[2][0])<<" | "<<Character(b[2][1])<<" | "<<Character(b[2][2])<<" "<<"          "<<"3 1|3 2|3 3"<<endl;
     }
 
     void tictactoe(){
@@ -116,19 +116,32 @@ class t{
             }
         }
     }
+    void Explanation(){
+        cout<<"Tic Tac Toe is a two player game in which both the players take turns alternatively"<<endl;
+        cout<<"\n Starts with player one(O) then player two(X). Who so ever makes a straight line \n\n even the diagonals on the board first wins. Positions are given in the below."<<endl;
+        cout<<"1 1|1 2|1 3"<<endl;
+        cout<<"-----------"<<endl;
+        cout<<"2 1|2 2|2 3"<<endl;
+        cout<<"-----------"<<endl;
+        cout<<"3 1|3 2|3 3"<<endl;
+        cout<<"\n\nLet's Start Playing"<<endl;
+    }
 };
+
+
 
 int main(){
     bool play = true;
+    
+    t obj;
+    obj.Explanation();
     string p1,p2;
     cout<<"Enter first player's name: ";
     cin>>p1;
     cout<<"Enter second player's name: ";
     cin>>p2;
 
-    t obj;
     obj.getnames(p1,p2);
-
 
     while(play){
         obj.tictactoe();
