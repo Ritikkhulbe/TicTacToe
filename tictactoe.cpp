@@ -67,12 +67,12 @@ class t{
         return 'a';
     }
     void print_board(vector<vector<char>>& b){
-        cout<<"   BOARD              POSITIONS  "<<endl;
-        cout<<" "<<Character(b[0][0])<<" | "<<Character(b[0][1])<<" | "<<Character(b[0][2])<<" "<<"          "<<"1 1|1 2|1 3"<<endl;
-        cout<<"-----------"<<"          "<<"-----------"<<endl;
-        cout<<" "<<Character(b[1][0])<<" | "<<Character(b[1][1])<<" | "<<Character(b[1][2])<<" "<<"          "<<"2 1|2 2|2 3"<<endl;
-        cout<<"-----------"<<"          "<<"-----------"<<endl;
-        cout<<" "<<Character(b[2][0])<<" | "<<Character(b[2][1])<<" | "<<Character(b[2][2])<<" "<<"          "<<"3 1|3 2|3 3"<<endl;
+        cout<<"      BOARD              POSITIONS  "<<endl;
+        cout<<"    "<<Character(b[0][0])<<" | "<<Character(b[0][1])<<" | "<<Character(b[0][2])<<" "<<"          "<<"1 1|1 2|1 3"<<endl;
+        cout<<"   -----------"<<"          "<<"-----------"<<endl;
+        cout<<"    "<<Character(b[1][0])<<" | "<<Character(b[1][1])<<" | "<<Character(b[1][2])<<" "<<"          "<<"2 1|2 2|2 3"<<endl;
+        cout<<"   -----------"<<"          "<<"-----------"<<endl;
+        cout<<"    "<<Character(b[2][0])<<" | "<<Character(b[2][1])<<" | "<<Character(b[2][2])<<" "<<"          "<<"3 1|3 2|3 3"<<endl;
     }
 
     void tictactoe(){
@@ -82,20 +82,21 @@ class t{
         while(a){
             print_board(board);
             if(a%2!=0){
-                cout << "Enter the position "<<p1<< "(O)" << endl;
+                cout << "   Enter the position "<<p1<< "(O)" << endl;
                 ch = 'O';
             }else{
-                cout << "Enter the position  "<<p2<< "(X)"  << endl;
+                cout << "   Enter the position  "<<p2<< "(X)"  << endl;
                 ch = 'X';
             }
             
             int x,y;
             while(true){
+                cout<<"     ";
                 cin >> x >> y;
                 if(x<1 || x>3 || y<1 || y>3){
-                    cout<<"Invalid Position. Try again."<<endl;
+                    cout<<"   Invalid Position. Try again."<<endl;
                 }else if(board[x-1][y-1] != 'a'){
-                    cout<<"Position already occupied. Try Again."<<endl;
+                    cout<<"   Position already occupied. Try Again."<<endl;
                 }
                 else{
                     break;
@@ -107,24 +108,28 @@ class t{
                 if(won(board, ch)){   
                 print_board(board);
                     if(ch == 'O'){
-                        cout<<p1<< " won!!! Congrats!!"<<endl;
+                        cout<<"\n   "<<p1<< " WON!!! Congrats!!"<<endl;
                     }else{
-                        cout<<p2<< " won!!! Congrats!!"<<endl;
+                        cout<<"\n   "<<p2<< " WON!!! Congrats!!"<<endl;
                     }
                     a=0;
                 }
             }
+            if(a>9){
+                cout<<"\n   It's a tie."<<endl;
+                a=0;
+            }
         }
     }
     void Explanation(){
-        cout<<"Tic Tac Toe is a two player game in which both the players take turns alternatively"<<endl;
-        cout<<"\n Starts with player one(O) then player two(X). Who so ever makes a straight line \n\n even the diagonals on the board first wins. Positions are given in the below."<<endl;
-        cout<<"1 1|1 2|1 3"<<endl;
-        cout<<"-----------"<<endl;
-        cout<<"2 1|2 2|2 3"<<endl;
-        cout<<"-----------"<<endl;
-        cout<<"3 1|3 2|3 3"<<endl;
-        cout<<"\n\nLet's Start Playing"<<endl;
+        cout<<"   Tic Tac Toe is a two player game in which both the players take turns alternatively"<<endl;
+        cout<<"\n   Starts with player one(O) then player two(X). Who so ever makes a straight line \n\n   Even the diagonals on the board first wins. Positions are given in the below."<<endl;
+        cout<<"   1 1|1 2|1 3"<<endl;
+        cout<<"   -----------"<<endl;
+        cout<<"   2 1|2 2|2 3"<<endl;
+        cout<<"   -----------"<<endl;
+        cout<<"   3 1|3 2|3 3"<<endl;
+        cout<<"\n\n   Let's Start Playing\n"<<endl;
     }
 };
 
@@ -136,9 +141,9 @@ int main(){
     t obj;
     obj.Explanation();
     string p1,p2;
-    cout<<"Enter first player's name: ";
+    cout<<"   Enter first player's name: ";
     cin>>p1;
-    cout<<"Enter second player's name: ";
+    cout<<"   Enter second player's name: ";
     cin>>p2;
 
     obj.getnames(p1,p2);
@@ -146,7 +151,8 @@ int main(){
     while(play){
         obj.tictactoe();
         char ch;
-        cout << "Do you want to play again? (y/n)";
+        cout << "   Do you want to play again? (y/n)";
+        cout<<endl<<"     ";
         cin>>ch;
         if(ch == 'y' || ch == 'Y'){
             play = true;
@@ -156,7 +162,7 @@ int main(){
             cout<<"Wrong argument: Game Ended"<<endl;
         }
     }
-    cout<< "Thanks for playing, come again soon <3"<<endl;
+    cout<< "   Thanks for playing, come again soon <3"<<endl;
     cin>>p1;
     return 0;
 }
