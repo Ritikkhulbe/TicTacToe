@@ -11,6 +11,53 @@ class t{
         this->p1 = name1;
         this->p2 = name2;
     }
+    bool won(vector<vector<char>>& b, char ch){
+
+        //checking rows
+        for(int i = 0;i<3;i++){
+            int c = 0;
+            for(int j = 0;j<3;j++){
+                if(b[i][j]==ch) 
+                    c++;
+            }
+            if(c==3){
+                return true;
+            }
+        }
+        //checking coloumns
+        for(int j = 0;j<3;j++){
+            int c = 0;
+            for(int i = 0;i<3;i++){
+                if(b[i][j]==ch) 
+                    c++;
+            }
+            if(c==3){
+                return true;
+            }
+        }
+        
+        //checking diagonal left-top to right-bottom
+        int c = 0;
+        for(int x = 0; x < 3 ; x++){
+            if(b[x][x]==ch)
+                c++;
+        }
+        if(c==3){
+            return true;
+        }
+
+        //checking diagonal right-top to left-bottom
+        c = 0;
+        int j = 0;
+        for(int i = 2;i>=0;i--){
+            if(b[i][j] == ch)
+                c++;
+            j++;
+        }if(c==3){
+            return true;
+        }
+        return false;
+    }
 
     void tictactoe(){
         vector<vector<char>> board(3, vector<char>(3, 'a'));
@@ -18,10 +65,10 @@ class t{
         char ch;
         while(a){
             if(a%2!=0){
-                cout << "Enter the position of player one (O)" << endl;
+                cout << "Enter the position "<<p1<< "(O)" << endl;
                 ch = 'O';
             }else{
-                cout << "Enter the position of player two (X)" << endl;
+                cout << "Enter the position  "<<p2<< "(X)"  << endl;
                 ch = 'X';
             }
             
@@ -30,7 +77,7 @@ class t{
                 cin >> x >> y;
                 if(x<1 || x>3 || y<1 || y>3){
                     cout<<"Invalid Position. Try again."<<endl;
-                }else if(board[x-1][y-1] == 'a'){
+                }else if(board[x-1][y-1] != 'a'){
                     cout<<"Position already occupied"<<endl;
                 }
                 else{
@@ -39,6 +86,16 @@ class t{
             }
             board[x-1][y-1] = ch;
             a++;
+            if(a>=6){
+                if(won(board, ch)){
+                    if(ch == 'O'){
+                        cout<<p1<< " won!!! Congrats!!"<<endl;
+                    }else{
+                        cout<<p2<< " won!!! Congrats!!"<<endl;
+                    }
+                    a=0;
+                }
+            }
         }
     }
 };
@@ -56,7 +113,7 @@ int main(){
 
 
     while(play){
-        tictactoe();
+        obj.tictactoe();
         char ch;
         cout << "Do you want to play again? (y/n)";
         cin>>ch;
@@ -68,4 +125,6 @@ int main(){
             cout<<"Wrong argument: Game Ended"<<endl;
         }
     }
+    cout<< "Thanks for playing, come again soon <3"<<endl;
+    return 0;
 }
