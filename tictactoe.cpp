@@ -95,7 +95,7 @@ class t{
                 if(x<1 || x>3 || y<1 || y>3){
                     cout<<"Invalid Position. Try again."<<endl;
                 }else if(board[x-1][y-1] != 'a'){
-                    cout<<"Position already occupied"<<endl;
+                    cout<<"Position already occupied. Try Again."<<endl;
                 }
                 else{
                     break;
@@ -157,5 +157,6 @@ int main(){
         }
     }
     cout<< "Thanks for playing, come again soon <3"<<endl;
+    cin>>p1;
     return 0;
 }
